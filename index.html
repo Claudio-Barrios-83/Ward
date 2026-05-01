@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ward</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #0f1115;
+      }
+      .app {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+      }
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        background: linear-gradient(180deg, #1b1f2a 0%, #151922 100%);
+        border-bottom: 1px solid #2a3040;
+      }
+      .nav-btn {
+        width: 36px;
+        height: 36px;
+        border: 1px solid #3a4152;
+        border-radius: 10px;
+        background: #202636;
+        color: #e9eefc;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.15s ease;
+      }
+      .nav-btn:hover {
+        background: #2a3247;
+        transform: translateY(-1px);
+      }
+      .nav-btn:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+        transform: none;
+      }
+      webview {
+        flex: 1;
+        min-height: 0;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header class="toolbar">
+        <button id="backBtn" class="nav-btn" title="Atras (Alt+Left)">&larr;</button>
+        <button id="forwardBtn" class="nav-btn" title="Adelante (Alt+Right)">&rarr;</button>
+        <button id="homeBtn" class="nav-btn" title="Home (Alt+Home)">&#8962;</button>
+        <button id="reloadBtn" class="nav-btn" title="Recargar (Ctrl+R)">&#10227;</button>
+      </header>
+
+      <webview
+        id="youtubeView"
+        src="https://www.youtube.com/"
+        partition="persist:ward-v2"
+        allowpopups="false"
+        style="flex: 1; width: 100%; min-height: 0"
+      ></webview>
+    </main>
+    <script src="./youtube-dom-guards.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
